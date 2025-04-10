@@ -23,11 +23,11 @@ Este archivo define tres servicios principales: **Odoo**, **PostgreSQL** y **PgA
   - `"8069:8069"`: El puerto 8069 del contenedor se mapea al puerto 8069 en la máquina host. Puedes acceder a Odoo en `http://localhost:8069`.
 
 - **Variables de entorno**:
-  - `USER=daniel`: Define el usuario para el sistema Odoo (`daniel`).
-  - `PASSWORD=daniel`: Define la contraseña para el usuario `daniel`.
+  - `USER=daniel`: Define el usuario para el sistema Odoo.
+  - `PASSWORD=daniel`: Define la contraseña para el usuario.
 
 - **Dependencias**:
-  - `depends_on: db`: Odoo depende del servicio `db` (PostgreSQL). El contenedor de Odoo se iniciará después de que el contenedor de la base de datos esté listo.
+  - `depends_on: db`: Odoo depende del servicio `db`. El contenedor de Odoo se iniciará después de que el contenedor de la base de datos esté listo.
 
 - **Volúmenes**:
   - `./config:/home/dam/Documentos/SXE/Odoo/config`: Monta el directorio `config` del host en el contenedor para personalizar la configuración de Odoo.
@@ -38,7 +38,7 @@ Este archivo define tres servicios principales: **Odoo**, **PostgreSQL** y **PgA
 
 ---
 
-## 2. Servicio `db` (PostgreSQL)
+## 2. Servicio `db`
 
 - **Imagen**: `postgres:latest`
   - Usa la última versión de la imagen de PostgreSQL.
@@ -47,9 +47,9 @@ Este archivo define tres servicios principales: **Odoo**, **PostgreSQL** y **PgA
   - Este contenedor también se reinicia automáticamente si se detiene o falla.
 
 - **Variables de entorno**:
-  - `POSTGRES_USER=daniel`: Define el nombre de usuario para la base de datos PostgreSQL (`daniel`).
-  - `POSTGRES_PASSWORD=daniel`: Define la contraseña del usuario `daniel` en la base de datos.
-  - `POSTGRES_DB=postgres`: Define el nombre de la base de datos que se creará por defecto (`postgres`).
+  - `POSTGRES_USER=daniel`: Define el nombre de usuario para la base de datos PostgreSQL.
+  - `POSTGRES_PASSWORD=daniel`: Define la contraseña del usuario en la base de datos.
+  - `POSTGRES_DB=postgres`: Define el nombre de la base de datos que se creará por defecto.
   - `PGDATA=/var/lib/post/postgresql/data/PGDATA`: Personaliza el directorio donde PostgreSQL almacenará los datos.
 
 - **Redes**:
