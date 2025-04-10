@@ -1,0 +1,44 @@
+services:
+  odoo:
+    image: odoo:17
+    restart: always
+    ports:
+      - "8069:8069"
+    environment:
+      - USER=daniel
+      - PASSWORD=daniel
+    depends_on:
+      - db
+    volumes:
+      - ./config:/home/dam/Documentos/SXE/Odoo/config
+      - /home/dam/Documentos/SXE/Odoo/extra-addons:/mnt/extra-addons
+    networks:
+      - odoo_network
+
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=daniel
+      - POSTGRES_PASSWORD=daniel
+      - POSTGRES_DB=postgres
+      - PGDATA=/var/lib/post/postgresql/data/PGDATA
+    networks:
+      - odoo_network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "5433:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=daniel
+    depends_on:
+      - db
+    networks:
+      - odoo_network
+
+networks:
+  odoo_network:
+    driver: bridge
