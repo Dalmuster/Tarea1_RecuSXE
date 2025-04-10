@@ -9,9 +9,6 @@ services:
       - PASSWORD=daniel
     depends_on:
       - db
-    volumes:
-      - ./config:/home/dam/Documentos/SXE/Odoo/config
-      - /home/dam/Documentos/SXE/Odoo/extra-addons:/mnt/extra-addons
     networks:
       - odoo_network
 
