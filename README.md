@@ -29,10 +29,6 @@ Este archivo define tres servicios principales: **Odoo**, **PostgreSQL** y **PgA
 - **Dependencias**:
   - `depends_on: db`: Odoo depende del servicio `db`. El contenedor de Odoo se iniciará después de que el contenedor de la base de datos esté listo.
 
-- **Volúmenes**:
-  - `./config:/home/dam/Documentos/SXE/Odoo/config`: Monta el directorio `config` del host en el contenedor para personalizar la configuración de Odoo.
-  - `/home/dam/Documentos/SXE/Odoo/extra-addons:/mnt/extra-addons`: Monta un directorio de **addons** adicionales para extender la funcionalidad de Odoo.
-
 - **Redes**:
   - `networks: odoo_network`: El contenedor se conecta a la red `odoo_network` para comunicarse con otros contenedores.
 
